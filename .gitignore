@@ -1,2 +1,5 @@
 src/main/logs
 src/test/logs
+.idea/workspace.xml
+.idea/tasks.xml
+*.iws

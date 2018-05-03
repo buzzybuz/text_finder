@@ -1,7 +1,0 @@
-
-testFileScannerThread.txt
-Block with word1.
-testFileScannerThread.txt
-Block with word3!
-testFileScannerThread.txt
-Block with word5 and word6?
