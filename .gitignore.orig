@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+/.gradle
+/.idea
+/build
+/out
+**/logs
+=======
+**/logs
+.idea/workspace.xml
+.idea/tasks.xml
+*.iws
+*.iml
+build/
+>>>>>>> 45f174d0da2141b4130b344510301cee08930e31
