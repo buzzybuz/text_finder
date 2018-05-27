@@ -1,5 +1,8 @@
 import org.apache.log4j.Logger;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,8 +26,8 @@ public class WebScannerThread extends Thread {
         try {
             URL url = new URL(webAddress);
             con = (HttpURLConnection) url.openConnection();
-//            try (Reader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "Cp1251"))) {
-            try (Reader reader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+            try (Reader reader = new BufferedReader(new InputStreamReader(con.getInputStream(), "Cp1251"))) {
+//            try (Reader reader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 StringBuilder stringBuilder = new StringBuilder();
                 int chInt;
                 char ch;
@@ -44,7 +47,7 @@ public class WebScannerThread extends Thread {
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             errLogger.error(e);
         } finally {
             if (con != null)

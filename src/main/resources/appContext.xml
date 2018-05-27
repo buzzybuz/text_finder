@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="appParameters" class="AppParameters"/>
+
+    <bean id="fileScanner" class="FileScanner">
+        <constructor-arg value="#{appParameters.THREADS_AMOUNT}"/>
+        <constructor-arg value="#{appParameters.MAX_EXECTIME_MINUTES}"/>
+        <constructor-arg value="#{appParameters.TEXT_TO_SEARCH_PATH}"/>
+        <constructor-arg value="#{appParameters.FILE_SOURCE_PATH}"/>
+        <constructor-arg value="#{appParameters.FILE_RESULT_PATH}"/>
+    </bean>
+
+    <bean id="webScanner" class="WebScanner">
+        <constructor-arg value="#{appParameters.THREADS_AMOUNT}"/>
+        <constructor-arg value="#{appParameters.MAX_EXECTIME_MINUTES}"/>
+        <constructor-arg value="#{appParameters.TEXT_TO_SEARCH_PATH}"/>
+        <constructor-arg value="#{appParameters.WEB_SOURCE_PATH}"/>
+        <constructor-arg value="#{appParameters.WEB_RESULT_PATH}"/>
+    </bean>
+
+</beans>

@@ -1,36 +1,29 @@
-import org.apache.log4j.Logger;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 public class ResultWriter {
+    private String resultFile;
     private BufferedWriter writer;
-    private static final Logger errLogger = Logger.getLogger("errors");
 
-    ResultWriter(String resultFile) {
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultFile), "Cp1251"));
-        } catch (UnsupportedEncodingException | FileNotFoundException e) {
-            errLogger.error(e);
-        }
+    public ResultWriter(String resultFile) {
+        this.resultFile = resultFile;
     }
 
-    public void closeOutputStream() {
+    public void init() throws Exception {
+        writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultFile), "Cp1251"));
+    }
+
+    public void destroy() throws Exception {
         if (writer != null) {
-            try {
-                writer.close();
-            } catch (IOException e) {
-                errLogger.error(e);
-            }
+            writer.close();
         }
     }
 
-    public synchronized void writeSynchro(String source, String target) {
-        try {
-            writer.newLine();
-            writer.write(source);
-            writer.newLine();
-            writer.write(target);
-        } catch (IOException e) {
-            errLogger.error(e);
-        }
+    public synchronized void writeSynchro(String source, String target) throws Exception {
+        writer.newLine();
+        writer.write(source);
+        writer.newLine();
+        writer.write(target);
     }
 }

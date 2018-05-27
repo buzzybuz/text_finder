@@ -39,7 +39,7 @@ public class FileScannerThread extends Thread {
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             errLogger.error(e);
         }
     }
