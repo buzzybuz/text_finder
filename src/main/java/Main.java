@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml");
-        TextScanner textScanner = (TextScanner) context.getBean("webScanner");
+        TextScanner textScanner = (TextScanner) context.getBean("fileScanner");
 
         long startTime = System.currentTimeMillis();
         logger.info("started");
